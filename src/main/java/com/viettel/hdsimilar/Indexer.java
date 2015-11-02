@@ -31,7 +31,7 @@ public class Indexer {
 
   public void index(int docIndex, String[] doc) {
     TreeSet<String> set = toSet(doc);
-    int numPrefix = Math.round((1 - minJaccard) * set.size()) + 1;
+    int numPrefix = (int) Math.floor((1 - minJaccard) * set.size()) + 1;
     Iterator<String> iterator = set.iterator();
     for (int i = 1; i <= numPrefix && iterator.hasNext(); i++) {
       BucketManager.Key key = createKey(iterator.next(), i, set.size() - 1);
@@ -59,7 +59,7 @@ public class Indexer {
   private Set<Integer> getSimilarWithoutCheck(TreeSet<String> set) {
     Set<Integer> result = new HashSet<Integer>();
     int l = set.size();
-    int numPrefix = Math.round((1 - minJaccard) * set.size()) + 1;
+    int numPrefix = (int) Math.floor((1 - minJaccard) * set.size()) + 1;
     String[] prefixes = new String[numPrefix];
     Iterator<String> iterator = set.iterator();
     for (int i = 0; i < numPrefix && iterator.hasNext(); i++) {
