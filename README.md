@@ -1,4 +1,3 @@
-# high-degree-similarity-detection
 High-Similarity Detection by String Comparison
 ===============
 
